@@ -15,6 +15,15 @@
   height: 1.6em;
   border-radius: 4px;
 }
+.hero-li {
+    color: #7a9ba3;
+    text-decoration: none;
+}
+.hero-li:hover {
+    color:#00A0C6; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
 .heroes li:hover {
   color: #2c3a41;
   background-color: #e6e6e6;

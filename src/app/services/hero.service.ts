@@ -81,4 +81,17 @@ updateHero(hero: Hero): Observable<any>{
     )
   }
 
+  searchHeroes(searchKeyword: string) : Observable<Hero[]>{
+
+    if (!searchKeyword) { return of([])}
+    const searchUrl = `${this.heroesUrl}/?name=${searchKeyword}`
+
+    return this.myhttp.get<Hero[]>(searchUrl).pipe(
+      tap(result => {
+        result.length ? this.log(`found heroes matching "${searchKeyword}"`) : this.log(`no heroes matching "${searchKeyword}"`)
+      }),
+      catchError(this.handleError<Hero[]>(`searchHeroes`, []))
+    )
+  }
+
 }

@@ -12,6 +12,12 @@ import { catchError, map, tap } from 'rxjs/operators'
 export class HeroService {
 
   private heroesUrl = 'api/heroes'
+
+  httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json'
+      })
+    }
   
   constructor(private mssgservice: MessageService, private myhttp: HttpClient) { } // "service-in-service" 
 
@@ -52,5 +58,11 @@ export class HeroService {
     )
   }
 
+updateHero(hero: Hero): Observable<any>{
+    return this.myhttp.put(this.heroesUrl, hero, this.httpOptions).pipe( 
+      tap(_ => this.log(`hero updated ${hero.id}`)), 
+      catchError(this.handleError<any>(`updateHero ${hero.id}`))
+    )
+  }
 
 }

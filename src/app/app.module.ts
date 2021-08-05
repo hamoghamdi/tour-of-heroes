@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 
@@ -23,7 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
-    BrowserModule, FormsModule, AppRoutingModule, HttpClient, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false})
+    BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false})
   ], // The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
   providers: [],
   bootstrap: [AppComponent]

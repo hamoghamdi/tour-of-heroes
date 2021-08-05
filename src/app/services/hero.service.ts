@@ -65,4 +65,12 @@ updateHero(hero: Hero): Observable<any>{
     )
   }
 
+
+  addHero(hero:Hero) : Observable<Hero>{
+    return this.myhttp.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap( (newHero: Hero) => this.log(`added new Hero with id ${newHero.id}`)), 
+      catchError( this.handleError<any>(`addHero ${hero}`))
+    )
+  }
+
 }

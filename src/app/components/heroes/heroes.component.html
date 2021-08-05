@@ -1,4 +1,14 @@
 <h2>My Heroes</h2>
+
+<div class="add-hero-box">  <h4>Add Hero</h4>
+    <label for="new-hero">Hero name:</label>
+    <input type="text" name="newHero" id="new-hero" #heroName>
+    <!-- try using name attr -->
+
+    <button class="add-button" (click)="add(heroName.value); heroName.value='' ">
+        Add hero
+    </button>
+</div>
 <ul class="heroes">
     <li *ngFor="let hero of heroes">
         <a routerLink="/heroes/{{hero.id}}" class="hero-li">
@@ -7,6 +17,8 @@
         
     </li>
 </ul>
+
+
 
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 <!-- one way data binding -->

@@ -21,4 +21,13 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeros().subscribe( heroes => (this.heroes = heroes));
   }
 
+
+  add(heroname: string): void{
+    heroname = heroname.trim();
+    if (!heroname ) { return ; }
+    this.heroService.addHero( {name: heroname} as Hero).subscribe( hero => this.heroes.push(hero))
+    // this.heroService.addHero({ name } as Hero).subscribe( hero => {this.heroes.push(hero)})
+    // it must match the interface to accept it using "as"
+  }
+
 }

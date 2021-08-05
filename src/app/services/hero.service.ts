@@ -73,4 +73,12 @@ updateHero(hero: Hero): Observable<any>{
     )
   }
 
+  deleteHero(id:number): Observable<any>{
+    const url = `${this.heroesUrl}/${id}`
+    return this.myhttp.delete<any>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted hero with id ${id}`)),
+      catchError(this.handleError(`deleteHero, id ${id}`))
+    )
+  }
+
 }

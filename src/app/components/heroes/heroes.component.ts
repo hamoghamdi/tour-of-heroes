@@ -30,4 +30,9 @@ export class HeroesComponent implements OnInit {
     // it must match the interface to accept it using "as"
   }
 
+  delete(hero: Hero): void{
+    this.heroes = this.heroes.filter( h => h.id !== hero.id)
+    this.heroService.deleteHero(hero.id).subscribe();
+  }
+
 }

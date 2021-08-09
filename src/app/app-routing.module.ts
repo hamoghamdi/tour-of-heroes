@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent},
   // { path: "heroes/:id", component: HeroDetailComponent},
   { 
-    path: '', 
+    path: 'heroes/:id', 
   loadChildren: () => import('./components/hero-detail/hero-detail.module').then(m => m.HeroDetailModule)
 },
   { path: "", redirectTo: '/dashboard', pathMatch:'full'} // default route 
